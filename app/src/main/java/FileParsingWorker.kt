@@ -117,6 +117,80 @@ class FileParsingWorker(
 
     // --- Placeholder for your Markdown Parsing Logic ---
     // You need to implement this function based on your markdown file structure
+    /*
+event file format:
+---
+title: test event
+allDay: false
+startTime: 10:33
+endTime: 11:33
+date: 2025-07-04
+completed: null
+---
+
+multi-day event file format:
+---
+title: test multiday even
+allDay: false
+startTime: 09:00
+endTime: 10:00
+date: 2025-07-04
+endDate: 2025-07-05
+completed: null
+---
+
+all day event file format:
+---
+title: test all day event
+allDay: true
+date: 2025-07-06
+completed: null
+---
+
+multi-all-day event file format:
+---
+title: test multi all day event
+allDay: true
+date: 2025-07-05
+endDate: 2025-07-06
+completed: null
+---
+
+recurring event file format (endless if endRecur is missing)
+Days of week:
+Sunday - U
+Monday - M
+Tuesday - T
+Wednesday - W
+Thursday - R
+Friday - F
+Saturday - S
+---
+title: test recurring never ends
+allDay: false
+startTime: 11:00
+endTime: 13:00
+type: recurring
+daysOfWeek: [U,S,F,R,W,T,M]
+startRecur: 2025-07-05
+endRecur: 2025-07-20
+---
+
+
+task file format:
+---
+title: test task
+allDay: false
+startTime: 10:33
+endTime: 11:33
+date: 2025-07-04
+completed: false
+---
+
+recurring tasks don't seem to work
+https://github.com/obsidian-community/obsidian-full-calendar/issues/583
+https://github.com/obsidian-community/obsidian-full-calendar/issues/486
+     */
     private fun parseMarkdownContent(content: String, fileName: String): List<CalendarEvent> {
         val events = mutableListOf<CalendarEvent>()
         // Example: Look for lines like "EVENT: Buy Groceries @ 2024-07-28 14:30"
